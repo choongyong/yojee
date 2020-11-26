@@ -1,3 +1,5 @@
+org: choongyongkoh
+app: serverless-app
 # Welcome to serverless. Read the docs
 # https://serverless.com/framework/docs/
 
@@ -23,4 +25,8 @@ functions:
       - http:
           path: hello-world
           method: get
+          cors: true
+      - http:
+          path: hello-world
+          method: post
           cors: true
