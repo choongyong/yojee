@@ -1,0 +1,22 @@
+{
+  "name": "yojee",
+  "version": "1.0.0",
+  "description": "yojee integration test",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/choongyong/yojee.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/choongyong/yojee/issues"
+  },
+  "homepage": "https://github.com/choongyong/yojee#readme",
+  "dependencies": {
+    "axios": "^0.21.0"
+  }
+}
