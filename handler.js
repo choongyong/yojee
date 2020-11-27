@@ -2,35 +2,38 @@
 const axios = require('axios')
 
 module.exports.helloWorld = async (event, context) => {
+  // console.log(event);
+  const bb = JSON.parse(event.body);
+  console.log(bb);
   const body = {
     "steps": [
       {
         "to_time": "2019-09-17T06:00:00.000Z",
         "state": "",
         "quantity": 50,
-        "postal_code": "",
+        "postal_code": "909123",
         "lng": 103.84979090000002,
         "lat": 1.2804208,
         "from_time": "2019-09-17T02:00:00.000Z",
         "country": "Singapore",
-        "address": "144 Robinson Road, Singapore"
+        "address": "45 Loyang Ave 3"
       },
       {
         "to_time": "2019-09-17T10:00:00.000Z",
         "state": "",
         "quantity": 50,
-        "postal_code": "068898",
+        "postal_code": `${bb.shipping_address.zip}`,
         "lng": 103.84920669999997,
         "lat": 1.2800304,
         "from_time": "2019-09-17T06:00:00.000Z",
-        "country": "Singapore",
-        "address": "80 Robinson Road, Singapore"
+        "country": `${bb.shipping_address.country}`,
+        "address": `${bb.shipping_address.address1}`
       }
     ],
     "sender_type": "organisation",
     "sender_id": 1454,
-    "price_currency": "SGD",
-    "price_amount": "0",
+    "price_currency": `${bb.currency}`,
+    "price_amount": `${bb.total_price}`,
     "placed_by_user_profile_id": "3",
     "items": [
       {
@@ -40,8 +43,8 @@ module.exports.helloWorld = async (event, context) => {
         "volume": 1,
         "service_type_id": 1,
         "service_type": "same_day",
-        "price_amount": "0",
-        "payload_type": "document",
+        "price_amount": `${bb.line_items[0].price}`,
+        "payload_type": "parcel",
         "length": 1,
         "height": 1
       }
@@ -58,8 +61,8 @@ module.exports.helloWorld = async (event, context) => {
         "item_id": 0
       }
     ],
-    "external_id": "my-external-order-id"
-  }
+    "external_id": `${bb.id}`,
+  };
   // const axios_resp = await axios
   //   .get('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
   //   .then(({ data }) => {
@@ -86,9 +89,11 @@ module.exports.helloWorld = async (event, context) => {
     headers: {
       'Access-Control-Allow-Origin': '*', // Required for CORS support to work
     },
-    body: axios_resp,
+    body: 'simple return for now',
   };
 
-  // console.log(axios_resp);
+  console.log(axios_resp);
+  // console.log(event.email);
+  console.log(body);
   return response;
 };
