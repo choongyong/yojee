@@ -6,7 +6,6 @@ const itemFactory = require("./item");
 const stepsFactory = require("./step");
 
 module.exports.helloWorld = async (event, context) => {
-  // console.log(event);
   const payload = JSON.parse(event.body);
   console.log(payload);
 
@@ -56,27 +55,24 @@ module.exports.helloWorld = async (event, context) => {
 
   console.log(body);
 
-  // const axios_resp = await axios
-  //   .get('http://swquotesapi.digitaljedi.dk/api/SWQuote/RandomStarWarsQuote')
-  //   .then(({ data }) => {
-  //     return data
-  //   })
   const config = {
     headers: {
       'company_slug': 'yojee-interview-integrations',
       'access_token': '5foTu0R+0sPShd/8jyuYXF2UbrUle/oSX+nPYVdGq0c=',
     }
-  }
+  };
+
   const axios_resp = await axios
     .post('https://umbrella-staging.yojee.com/api/v3/dispatcher/orders', body, config)
     .then(({ data }) => {
       return data
-    })
+    });
 
   const body2 = JSON.stringify({
     message: 'Go Serverless v1.0! My function executed successfully!',
     input: event,
   });
+
   const response = {
     statusCode: 200,
     headers: {
@@ -86,7 +82,5 @@ module.exports.helloWorld = async (event, context) => {
   };
 
   console.log(axios_resp);
-  // console.log(event.email);
-  // console.log(body);
   return response;
 };
