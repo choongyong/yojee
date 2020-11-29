@@ -24,9 +24,5 @@ functions:
     events:
       - http:
           path: hello-world
-          method: get
-          cors: true
-      - http:
-          path: hello-world
           method: post
           cors: true
