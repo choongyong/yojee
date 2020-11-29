@@ -26,10 +26,23 @@ module.exports.dispatcherOrders = async (event, context) => {
   });
   const now = moment();
 
-  body.steps.push(stepsFactory({
-    now: now,
-    quantity: quantity,
-  }));
+  if (payload.line_items[0].origin_location != null) {
+    body.steps.push({
+      ...stepsFactory({
+        now: now,
+        quantity: quantity,
+      }),
+      postal_code: payload.line_items[0].origin_location.zip,
+      country: payload.line_items[0].origin_location.country_code,
+      address: payload.line_items[0].origin_location.address1,
+    });
+  }
+  else {
+    body.steps.push(stepsFactory({
+      now: now,
+      quantity: quantity,
+    }));
+  }
 
   body.steps.push({
     ...stepsFactory({
