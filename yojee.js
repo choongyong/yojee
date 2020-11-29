@@ -39,6 +39,8 @@ module.exports.dispatcherOrders = async (event, context) => {
     postal_code: payload.shipping_address.zip,
     country: payload.shipping_address.country,
     address: payload.shipping_address.address1,
+    lng: payload.shipping_address.longitude,
+    lat: payload.shipping_address.latitude,
   });
 
   body.item_steps.push({
