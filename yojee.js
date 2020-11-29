@@ -5,7 +5,7 @@ const bodyFactory = require("./body");
 const itemFactory = require("./item");
 const stepsFactory = require("./step");
 
-module.exports.helloWorld = async (event, context) => {
+module.exports.dispatcherOrders = async (event, context) => {
   const payload = JSON.parse(event.body);
   console.log(payload);
 
@@ -67,11 +67,6 @@ module.exports.helloWorld = async (event, context) => {
     .then(({ data }) => {
       return data
     });
-
-  const body2 = JSON.stringify({
-    message: 'Go Serverless v1.0! My function executed successfully!',
-    input: event,
-  });
 
   const response = {
     statusCode: 200,

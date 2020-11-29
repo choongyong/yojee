@@ -18,11 +18,11 @@ provider:
 
 # The `functions` block defines what code to deploy
 functions:
-  helloWorld:
-    handler: handler.helloWorld
+  disptacherOrders:
+    handler: yojee.dispatcherOrders
     # The `events` block defines how to trigger the handler.helloWorld code
     events:
       - http:
-          path: hello-world
+          path: dispatcher-orders
           method: post
           cors: true
