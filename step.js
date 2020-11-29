@@ -7,8 +7,8 @@ const stepFactory = (step) => {
     "postal_code": "909123",
     "country": "Singapore",
     "address": "45 Loyang Ave 3",
-    "lng": 103.84979090000002,
-    "lat": 1.2804208,
+    // "lng": 103.84979090000002,
+    // "lat": 1.2804208,
   };
 };
 module.exports = stepFactory;
